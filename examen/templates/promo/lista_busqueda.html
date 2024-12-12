@@ -1,0 +1,16 @@
+{% extends "principal.html" %}
+
+{%block cabecera%}
+<p><strong>{{mensaje}}</strong><p>
+{% endblock %}
+
+{% block contenido %}
+    {% for promo in promos %}
+    <div class="col-sm-4 mb-2">
+        {% include 'promo.html' %}
+    </div>
+    {% empty %}
+    <h1>Lo sentimos pero no hay promociones</h1>
+    {% endfor %}
+
+{% endblock %}

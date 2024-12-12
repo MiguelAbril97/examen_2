@@ -5,5 +5,7 @@ from .import views
 urlpatterns = [
     path('',views.index,name='index'),
     path('promo/crear',views.crear,name='crear'),
+    path('promo/buscar',views.buscar,name='buscar'),
+    
 
 ]

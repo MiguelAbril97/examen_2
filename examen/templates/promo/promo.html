@@ -1,0 +1,15 @@
+<p>Nombre:{{promo.nombre}}</p>
+<p>Descripcion:{{promo.descripcion}}</p>
+<p>producto:{{promo.producto.descripcion}}</p>
+<div>usuarios:
+    <ul>
+    {%for usuario in promo.usuarios%}
+        <li>Nombre:{{usuario.nombre}}</li>
+        <li>Edad:{{usuario.edad}}</li>
+    {%endfor%}
+    </ul>
+</div>
+<p>Descuento: {{promo.descuento}}</p>
+<p>Inicio: {{promo.fecha_inicio}}</p>
+<p>Fin: {{promo.fecha_fin}}</p>
+<p>Activa: {{promo.activa}}</p>
