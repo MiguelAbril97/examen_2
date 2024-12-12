@@ -1,0 +1,71 @@
+{% extends "principal.html" %}
+
+{% block contenido %}
+<form action="{% url 'crear' %}" method="post"> 
+    {% csrf_token %} 
+
+    <!-- Campo de texto -->
+    <div class="mb-3">
+        <label for="id_buscarTexto" class="form-label">Buscar Texto</label>
+        <input type="text" name="buscarTexto" id="id_buscarTexto" class="form-control" value="{{ formulario.buscarTexto.value }}">
+        {% if formulario.buscarTexto.errors %}
+            <div class="text-danger">{{ formulario.buscarTexto.errors }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Campo Fecha Desde -->
+    <div class="mb-3">
+        <label for="id_buscarFinDesde" class="form-label">Buscar Fin Desde</label>
+        <input type="date" name="buscarFinDesde" id="id_buscarFinDesde" class="form-control" value="{{ formulario.buscarFinDesde.value }}">
+        {% if formulario.buscarFinDesde.errors %}
+            <div class="text-danger">{{ formulario.buscarFinDesde.errors }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Campo Fecha Hasta -->
+    <div class="mb-3">
+        <label for="id_buscarFinHasta" class="form-label">Buscar Fin Hasta</label>
+        <input type="date" name="buscarFinHasta" id="id_buscarFinHasta" class="form-control" value="{{ formulario.buscarFinHasta.value }}">
+        {% if formulario.buscarFinHasta.errors %}
+            <div class="text-danger">{{ formulario.buscarFinHasta.errors }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Campo Descuento -->
+    <div class="mb-3">
+        <label for="id_buscarDescuento" class="form-label">Buscar Descuento</label>
+        <input type="number" name="buscarDescuento" id="id_buscarDescuento" class="form-control" min="0" max="10" value="{{ formulario.buscarDescuento.value }}">
+        {% if formulario.buscarDescuento.errors %}
+            <div class="text-danger">{{ formulario.buscarDescuento.errors }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Campo Usuarios -->
+    <div class="mb-3">
+        <label for="id_buscarUsuarios" class="form-label">Buscar Usuarios</label>
+        <div id="id_buscarUsuarios">
+            {% for usuario in formulario.buscarUsuarios %}
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" name="buscarUsuarios" id="{{ usuario.id_for_label }}" value="{{ usuario.choice_value }}" {% if usuario.choice_label in formulario.buscarUsuarios.value %}checked{% endif %}>
+                    <label class="form-check-label" for="{{ usuario.id_for_label }}">{{ usuario.choice_label }}</label>
+                </div>
+            {% endfor %}
+        </div>
+        {% if formulario.buscarUsuarios.errors %}
+            <div class="text-danger">{{ formulario.buscarUsuarios.errors }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Campo Activa -->
+    <div class="mb-3 form-check">
+        <input type="checkbox" name="esActiva" id="id_esActiva" class="form-check-input" {% if formulario.esActiva.value %}checked{% endif %}>
+        <label for="id_esActiva" class="form-check-label">Es Activa</label>
+        {% if formulario.esActiva.errors %}
+            <div class="text-danger">{{ formulario.esActiva.errors }}</div>
+        {% endif %}
+    </div>
+
+    <!-- Botón de envío -->
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}

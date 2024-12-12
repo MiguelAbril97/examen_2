@@ -1,0 +1,23 @@
+<html>
+    {%load static%}
+    <head>
+        <title>Nuestra Tienda</title>
+        {% load django_bootstrap5 %}
+        {% bootstrap_css %}
+        <script type="text/javascript" src="{% static 'script.js' %}"></script>
+        <link rel="stylesheet" href="{% static 'estilo.css' %}">
+
+    </head>
+    <body>
+        <div>
+            {%include 'estructura/menu.html'%}   
+        </div>
+            {%block cabecera%}
+            {% endblock %}
+
+            {%block contenido%}
+            {% endblock %}
+            {% bootstrap_javascript %}
+    </body>
+
+</html> 
